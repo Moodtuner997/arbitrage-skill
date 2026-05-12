@@ -1,0 +1,9 @@
+# Sentinel file produced by scripts/arbitrage-toggle.sh
+scripts/.active
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
