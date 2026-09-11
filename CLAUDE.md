@@ -30,7 +30,7 @@ No tests. Manual check: open a Claude Code session with the skill installed and 
 ## Conventions and gotchas
 
 - Keep `SKILL.md` short: the README explicitly states skills work best when the model holds the whole prompt in working memory. Put new material in `references/`, not in `SKILL.md`.
-- Public repo, user-agnostic: no personal paths or project names. The skill was extracted from a private workflow — do not reintroduce private context.
+- Public repo, user-agnostic: no personal paths, project names or private context.
 - README is bilingual with mirrored sections (`## English` then `## Français`); any change to usage, output format, install or background mode must be applied to both halves. The French half is written without accents on purpose (plain ASCII); keep that style. `SKILL.md` and `references/` are English only.
 - The output block format in `SKILL.md` and both README halves must stay identical (`=== ARBITRAGE [STANDARD|DEEP] ===` ... `=== ===`).
 - Contribution scope per README: new examples, `SKILL.md` translations, integration recipes. It is intentionally single-purpose — do not widen it.
