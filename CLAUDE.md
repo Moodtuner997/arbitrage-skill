@@ -39,5 +39,5 @@ No tests. Manual check: open a Claude Code session with the skill installed and 
 ## Release
 
 Fleet rule in the workspace `CLAUDE.md` (`../CLAUDE.md`, "Commits et release"). Here: release-please type
-`simple`, `bash scripts/release.sh arbitrage-skill` from the workspace root; after the release PR is merged it
+`simple`, `.github/workflows/release.yml` on every push to `main` (GitHub-hosted runner, free on a public repo; prod: `bash scripts/release.sh arbitrage-skill --prod` from the workspace root); it merges the release PR itself, then
 stops at tag + changelog, nothing is deployed. Versions: https://github.com/Moodtuner997/arbitrage-skill/releases
