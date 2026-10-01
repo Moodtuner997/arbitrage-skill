@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/Moodtuner997/arbitrage-skill/compare/v1.0.0...v1.0.1) (2026-10-01)
+
+
+### Documentation
+
+* **claude:** bloc release réduit à une ligne, règle renvoyée au workspace ([ecbc318](https://github.com/Moodtuner997/arbitrage-skill/commit/ecbc318a45f5a3cb661e4ab6dff0bcf8f1535093))
+* **claude:** release tenue par l'Action release.yml ([f4391d6](https://github.com/Moodtuner997/arbitrage-skill/commit/f4391d6c191709a1d9cad73f26ee59a8fb689f04))
+
 ## 1.0.0 (2026-09-22)
 
 
