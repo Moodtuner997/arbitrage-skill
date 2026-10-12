@@ -7,3 +7,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Idées : jamais dans un dépôt public
+IDEES.md
