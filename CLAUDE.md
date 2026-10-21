@@ -1,10 +1,11 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## What this is
+# CLAUDE.md — arbitrage-skill
 
 Public MIT Claude Code skill `/arbitrage`: flags when an unvalidated heuristic ("often true") is being treated as an algorithm ("always true") in code, schemas, prompts, specs or architecture decisions. Pure prompt skill — no build, no runtime beyond one toggle script.
+
+## Before any action
+
+- Public repo: everything committed is world-readable, history included. No personal paths, hosts, emails, project names or private context, in files or in commit messages. Private notes stay in `IDEES.md` (gitignored).
+- State lives in the issues and releases; there is no HANDOFF. Check reality first: `git fetch --prune`, `git status`, `git log -5 origin/main`.
 
 ## Commands
 
@@ -30,14 +31,17 @@ No tests. Manual check: open a Claude Code session with the skill installed and 
 ## Conventions and gotchas
 
 - Keep `SKILL.md` short: the README explicitly states skills work best when the model holds the whole prompt in working memory. Put new material in `references/`, not in `SKILL.md`.
-- Public repo, user-agnostic: no personal paths, project names or private context.
-- README is bilingual with mirrored sections (`## English` then `## Français`); any change to usage, output format, install or background mode must be applied to both halves. The French half is written without accents on purpose (plain ASCII); keep that style. `SKILL.md` and `references/` are English only.
+- README is bilingual with mirrored sections (`## English` then `## Français`); any change to usage, output format, install or background mode must be applied to both halves. The French body is written without accents (a few headings and dashes are not ASCII); keep that style. `SKILL.md` and `references/` are English only.
 - The output block format in `SKILL.md` and both README halves must stay identical (`=== ARBITRAGE [STANDARD|DEEP] ===` ... `=== ===`).
 - Contribution scope per README: new examples, `SKILL.md` translations, integration recipes. It is intentionally single-purpose — do not widen it.
 
 <!-- chaine-release -->
 ## Release
 
-Fleet rule in the workspace `CLAUDE.md` (`../CLAUDE.md`, "Commits et release"). Here: release-please type
-`simple`, `.github/workflows/release.yml` on every push to `main` (GitHub-hosted runner, free on a public repo; prod: `bash scripts/release.sh arbitrage-skill --prod` from the workspace root); it merges the release PR itself, then
-stops at tag + changelog, nothing is deployed. Versions: https://github.com/Moodtuner997/arbitrage-skill/releases
+Single branch `main`. Conventional Commits (`<type>(<scope>): <description>`): release-please (type `simple`) builds the version and changelog from them. `.github/workflows/release.yml` runs on every push to `main` on a GitHub-hosted runner (never a self-hosted one on a public repo), merges the release PR itself and stops at tag + changelog; nothing is deployed. Versions: https://github.com/Moodtuner997/arbitrage-skill/releases
+
+## Mistakes not to repeat
+
+- Do not keep private ideas in a tracked file: `IDEES.md` had to be gitignored (bd64bc3, 2026-10-12).
+- Do not run a token-backed review workflow on this public repo: an automated review was first restricted to the owner, then removed (9ed3036, bb1f34f, 2026-10-01/02).
+- Do not let the release PR show a failing CI status: fixed in fed1aeb (2026-10-06).
