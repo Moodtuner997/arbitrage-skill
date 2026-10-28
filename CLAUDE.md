@@ -1,47 +1,25 @@
-# CLAUDE.md — arbitrage-skill
+# arbitrage-skill
 
-Public MIT Claude Code skill `/arbitrage`: flags when an unvalidated heuristic ("often true") is being treated as an algorithm ("always true") in code, schemas, prompts, specs or architecture decisions. Pure prompt skill — no build, no runtime beyond one toggle script.
+## Règles inconditionnelles
+- Dépôt public MIT : tout ce qui est suivi est lisible par tous, historique compris. Aucun chemin local, hôte, e-mail, nom de projet ou contexte privé dans un fichier ni dans un message de commit ; les idées privées restent dans `IDEES.md` (ignoré).
+- Skill en prompt pur, mono-objet : ne pas élargir son périmètre. `SKILL.md` reste court (le modèle doit le tenir en mémoire de travail) ; toute matière nouvelle va dans `references/`.
+- Le README est bilingue (`## English` puis `## Français`, sections en miroir) : tout changement d'usage, de format de sortie, d'installation ou de mode d'arrière-plan s'applique aux deux moitiés. Le bloc `=== ARBITRAGE [STANDARD|DEEP] ===` … `=== ===` reste identique dans `SKILL.md` et les deux moitiés.
+- Une seule branche `main`, release-please type `simple` : `release.yml` tourne sur un runner GitHub (jamais auto-hébergé sur un dépôt public), fusionne la release PR et pose le tag ; rien n'est déployé.
+- Architecture, conventions et fichiers : `docs/architecture.md`.
 
-## Before any action
+<!-- gen:debut -->
+Dépôt `Moodtuner997/arbitrage-skill` (projet `arbitrage-skill`, arbitrage-skill, statut pause). Déploiement : aucun (pas de déploiement).
+Avant toute action : `gh issue list --label etat` (l'issue État, vérité opérationnelle), `git fetch --prune`, `just --list` (points d'entrée uniformes : test, lint, dev, build, deploy-staging).
+Tâches = issues GitHub ; état du dépôt = issue épinglée État ; mémoire longue = nœud `02-projets/arbitrage-skill.md` du second cerveau. Rien d'autre ne fait foi.
+Enveloppe : PR vers `dev`, fusion si CI verte ; `staging` et `main` n'avancent que par tag (release.yml, release.sh). Secrets jamais lus. Généré par scripts/claude-md-gen.py : ne pas éditer ce bloc.
+<!-- gen:fin -->
 
-- Public repo: everything committed is world-readable, history included. No personal paths, hosts, emails, project names or private context, in files or in commit messages. Private notes stay in `IDEES.md` (gitignored).
-- State lives in the issues and releases; there is no HANDOFF. Check reality first: `git fetch --prune`, `git status`, `git log -5 origin/main`.
-
-## Commands
-
-```bash
-# install = clone into the skills dir (Claude Code loads ~/.claude/skills/<name>/SKILL.md)
-git clone <repo-url> ~/.claude/skills/arbitrage      # or copy the folder; restart the Claude Code session
-
-# background mode toggle (sentinel file scripts/.active, gitignored)
-bash scripts/arbitrage-toggle.sh on|off|status
-
-shellcheck scripts/arbitrage-toggle.sh   # lint
-```
-
-No tests. Manual check: open a Claude Code session with the skill installed and run `/arbitrage`, `/arbitrage <text|file>`, `/arbitrage deep <file>`.
-
-## Architecture
-
-- `SKILL.md` — frontmatter (`name: arbitrage`, trigger phrases in `description`, `allowed-tools: Read, Write, Grep, Glob, AskUserQuestion, Agent`) + the whole behaviour. Three depth levels: QUICK (2-3 line inline callout), STANDARD (full `=== ARBITRAGE ===` block: HEURISTIC / ALGORITHMIC / GRAY ZONES + post-analysis workflow), DEEP (adds 3-6 month impact projection, validation tests, decision-log entry; auto-upgrade for spec/story files).
-- Post-arbitrage workflow appends to `arbitrage-log.md` (project root or `~/.claude/`) and keeps an `arbitrated` list so background mode does not re-flag accepted risks.
-- `scripts/arbitrage-toggle.sh` only creates/removes `scripts/.active` next to itself. Injection is done by a separate `UserPromptSubmit` hook (`arbitrage-inject.sh`, shown in README, not shipped) that exits 0 when the sentinel is absent and otherwise prints the QUICK reminder. Sentinel absent = zero cost.
-- `references/examples.md` — eight worked callouts by domain (product, code, DB, prompt engineering) plus two "no arbitrage needed" cases and a template for writing new ones. `references/integrations.md` — running DEEP on stories/RFCs/ADRs/PRDs (absolute keywords, heuristic ACs, downstream tech debt).
-
-## Conventions and gotchas
-
-- Keep `SKILL.md` short: the README explicitly states skills work best when the model holds the whole prompt in working memory. Put new material in `references/`, not in `SKILL.md`.
-- README is bilingual with mirrored sections (`## English` then `## Français`); any change to usage, output format, install or background mode must be applied to both halves. The French body is written without accents (a few headings and dashes are not ASCII); keep that style. `SKILL.md` and `references/` are English only.
-- The output block format in `SKILL.md` and both README halves must stay identical (`=== ARBITRAGE [STANDARD|DEEP] ===` ... `=== ===`).
-- Contribution scope per README: new examples, `SKILL.md` translations, integration recipes. It is intentionally single-purpose — do not widen it.
-
-<!-- chaine-release -->
-## Release
-
-Single branch `main`. Conventional Commits (`<type>(<scope>): <description>`): release-please (type `simple`) builds the version and changelog from them. `.github/workflows/release.yml` runs on every push to `main` on a GitHub-hosted runner (never a self-hosted one on a public repo), merges the release PR itself and stops at tag + changelog; nothing is deployed. Versions: https://github.com/Moodtuner997/arbitrage-skill/releases
-
-## Mistakes not to repeat
-
-- Do not keep private ideas in a tracked file: `IDEES.md` had to be gitignored (bd64bc3, 2026-10-12).
-- Do not run a token-backed review workflow on this public repo: an automated review was first restricted to the owner, then removed (9ed3036, bb1f34f, 2026-10-01/02).
-- Do not let the release PR show a failing CI status: fixed in fed1aeb (2026-10-06).
+## Pièges
+- Une idée privée dans un fichier suivi : `IDEES.md` a dû être ignoré dans `.gitignore` (bd64bc3, 2026-10-12).
+- Pas de workflow de revue qui utilise un jeton sur ce dépôt public : la revue automatique a d'abord été limitée au propriétaire, puis retirée (9ed3036, bb1f34f, 2026-10-01/02).
+- La release PR ne doit pas afficher une CI en échec : corrigé par la pause avant fusion dans `release.yml` (fed1aeb, refs ou-jouer#349).
+- Un message de commit hors format conventionnel disparaît des releases ; `docs`, `chore`, `ci`, `test`, `style` ne publient rien (1d136e3, #4).
+- Aucun chemin absolu Windows (lettre de disque) dans un fichier suivi : gitleaks refuse le push (règle commune des dépôts).
+- Le README français s'écrit sans accents (quelques titres et tirets font exception) ; `SKILL.md` et `references/` sont en anglais seulement (`docs/architecture.md`).
+- `scripts/.active` (témoin du mode arrière-plan) est ignoré : ne jamais le suivre (`.gitignore`).
+- `just lint` appelle `shellcheck`, absent du poste (code 127 le 2026-10-28) : à installer avant de compter sur lui.
