@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Moodtuner997/arbitrage-skill/compare/v1.0.1...v1.0.2) (2026-10-28)
+
+
+### Construction
+
+* **release:** les commits docs ne publient plus de release ([#4](https://github.com/Moodtuner997/arbitrage-skill/issues/4)) ([1d136e3](https://github.com/Moodtuner997/arbitrage-skill/commit/1d136e3b8eb67ca5b70fc5b7187334a365d2b3ea))
+
 ## [1.0.1](https://github.com/Moodtuner997/arbitrage-skill/compare/v1.0.0...v1.0.1) (2026-10-01)
 
 
