@@ -11,7 +11,7 @@
 Dépôt `Moodtuner997/arbitrage-skill` (projet `arbitrage-skill`, arbitrage-skill, statut pause). Déploiement : aucun (pas de déploiement).
 Avant toute action : `gh issue list --label etat` (l'issue État, vérité opérationnelle), `git fetch --prune`, `just --list` (points d'entrée uniformes : test, lint, dev, build, deploy-staging).
 Tâches = issues GitHub ; état du dépôt = issue épinglée État ; mémoire longue = nœud `02-projets/arbitrage-skill.md` du second cerveau. Rien d'autre ne fait foi.
-Enveloppe : PR vers `dev`, fusion si CI verte ; `staging` et `main` n'avancent que par tag (release.yml, release.sh). Secrets jamais lus. Généré par scripts/claude-md-gen.py : ne pas éditer ce bloc.
+Enveloppe : une seule branche, tag + release. Secrets jamais lus. Généré par scripts/claude-md-gen.py : ne pas éditer ce bloc.
 <!-- gen:fin -->
 
 ## Pièges
