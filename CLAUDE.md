@@ -16,7 +16,7 @@ Enveloppe : une seule branche, tag + release. Secrets jamais lus. Généré par 
 
 ## Pièges
 - Une idée privée dans un fichier suivi : `IDEES.md` a dû être ignoré dans `.gitignore` (bd64bc3, 2026-10-12).
-- Pas de workflow de revue qui utilise un jeton sur ce dépôt public : la revue automatique a d'abord été limitée au propriétaire, puis retirée (9ed3036, bb1f34f, 2026-10-01/02).
+- Pas de workflow de review qui utilise une API key sur ce dépôt public : la review automatique a d'abord été limitée au propriétaire, puis retirée (9ed3036, bb1f34f, 2026-10-01/02).
 - La release PR ne doit pas afficher une CI en échec : corrigé par la pause avant fusion dans `release.yml` (fed1aeb, refs ou-jouer#349).
 - Un message de commit hors format conventionnel disparaît des releases ; `docs`, `chore`, `ci`, `test`, `style` ne publient rien (1d136e3, #4).
 - Aucun chemin absolu Windows (lettre de disque) dans un fichier suivi : gitleaks refuse le push (règle commune des dépôts).
